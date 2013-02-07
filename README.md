@@ -62,3 +62,6 @@ Once a problem has been constructed, it can be passed to the `planner` function
 with optional arguments (e.g. a search heuristic) to generate a plan (if one
 exists). The resulting plan is a sequence of `Action` objects to execute, or
 `None` if no plan exists.
+
+PyDDL supports some basic numeric functions, comparisons, and operations. See
+the "missionaries and cannibals" problem for example usage.
