@@ -154,7 +154,11 @@ class Action(object):
                           set of (permuted) arguments
         """
         self.name = name
-        self.types, self.arg_names = zip(*parameters)
+        if len(parameters) > 0:
+            self.types, self.arg_names = zip(*parameters)
+        else:
+            self.types = tuple()
+            self.arg_names = tuple()
         self.preconditions = preconditions
         self.effects = effects
         self.unique = unique
