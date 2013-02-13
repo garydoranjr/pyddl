@@ -78,7 +78,7 @@ def plan_cost(plan):
 def monotone_heuristic(problem):
     """Heuristic that finds plans using only add lists of actions"""
     def h(state):
-        monotone_plan = planner(problem, monotone_heuristic(problem), state, monotone=True)
+        monotone_plan = planner(problem, null_heuristic, state, monotone=True, verbose=False)
         return plan_cost(monotone_plan)
     return h
 
