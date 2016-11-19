@@ -28,7 +28,7 @@ def planner(problem, heuristic=None, state0=None, goal=None,
     start = time()
     while True:
         if len(fringe) == 0:
-            if verbose: print 'States Explored: %d' % states_explored
+            if verbose: print('States Explored: %d' % states_explored)
             return None
 
         # Get node with minimum evaluation function from heap
@@ -40,9 +40,9 @@ def planner(problem, heuristic=None, state0=None, goal=None,
             plan = node.plan()
             dur = time() - start
             if verbose:
-                print 'States Explored: %d' % states_explored
-                print 'Time per state: %.3f ms' % (1000*dur / states_explored)
-                print 'Plan length: %d' % node.cost
+                print('States Explored: %d' % states_explored)
+                print('Time per state: %.3f ms' % (1000*dur / states_explored))
+                print('Plan length: %d' % node.cost)
             return plan
 
         # Expand node if we haven't seen it before

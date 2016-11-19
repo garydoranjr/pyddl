@@ -161,10 +161,10 @@ def problem(verbose):
 
     plan = planner(problem, heuristic=manhattan_distance_heuristic, verbose=verbose)
     if plan is None:
-        print 'No Plan!'
+        print('No Plan!')
     else:
         for action in plan:
-            print action
+            print(action)
 
 if __name__ == '__main__':
     from optparse import OptionParser
