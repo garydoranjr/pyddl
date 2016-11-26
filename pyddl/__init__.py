@@ -1,2 +1,2 @@
-from pyddl import *
-from planner import *
+from .pyddl import *
+from .planner import *

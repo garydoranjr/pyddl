@@ -129,6 +129,8 @@ class State(object):
     def __str__(self):
         return ('Predicates:\n%s' % '\n'.join(map(str, self.predicates))
                 +'\nFunctions:\n%s' % '\n'.join(map(str, self.functions)))
+    def __lt__(self, other):
+        return hash(self) < hash(other)
 
 def neg(effect):
     """
