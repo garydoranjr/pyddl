@@ -22,6 +22,7 @@ Goal State:
 | 6   7   8 |
 +---+---+---+
 """
+from __future__ import print_function
 from pyddl import Domain, Problem, Action, neg, planner
 
 def problem(verbose):

@@ -5,6 +5,7 @@ A boat must transport a group of 3 missionaries and 3 cannibals across a river,
 but at no time can the cannibals outnumber the missionaries at either side of
 the river.
 """
+from __future__ import print_function
 from pyddl import Domain, Problem, Action, neg, planner
 
 def problem(verbose):
