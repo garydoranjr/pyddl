@@ -100,7 +100,7 @@ class State(object):
         new_functions = dict()
         new_functions.update(self.functions)
         for function, value in action.num_effects:
-            new_functions[function] += value
+            new_functions[function] += value(self)
         return State(new_preds, new_functions, self.cost + 1, (self, action))
 
     def plan(self):
@@ -198,6 +198,21 @@ def _num_pred(op, x, y):
         return op(*operands)
     return predicate
 
+def _num_effect(ground, sign, x):
+    """
+    Returns a numerical effect that is called on a State.
+    """
+    if type(x) != int:
+        x = ground(x)
+
+    def effect(state):
+        if type(x) == int:
+            return sign*x
+        else:
+            return sign*state.f_dict[x]
+
+    return effect
+
 class _GroundedAction(object):
     """
     An action schema that has been grounded with objects
@@ -234,11 +249,11 @@ class _GroundedAction(object):
                 self.del_effects.append(ground(effect[1]))
             elif effect[0] == '+=':
                 function = ground(effect[1])
-                value = effect[2]
+                value = _num_effect(ground, 1, effect[2])
                 self.num_effects.append((function, value))
             elif effect[0] == '-=':
                 function = ground(effect[1])
-                value = -effect[2]
+                value = _num_effect(ground, -1, effect[2])
                 self.num_effects.append((function, value))
             else:
                 self.add_effects.append(ground(effect))
